@@ -1,6 +1,10 @@
 import inquire from "inquirer";
 import "colors";
 
+/* Aqui van los menus de inquire para interactuar */
+
+
+//Menu principal 
 const inquireMenu = async () => {
   const preguntas = [
     {
@@ -49,6 +53,7 @@ const inquireMenu = async () => {
   return opcion;
 };
 
+
 const pausa = async () => {
   const preguntas = [
     {
@@ -93,6 +98,7 @@ const completarTareas = async (tareas) => {
   await inquire.prompt(pregunta);
 };
 
+//Para el chekcbox de completar tareas
 const copmpletarTareasListado = async (tareas = []) => {
   const choices = tareas.map((tarea) => {
     if (tarea.completadoEn) {
@@ -111,6 +117,7 @@ const copmpletarTareasListado = async (tareas = []) => {
 
   return await inquire.prompt(t);
 };
+
 
 const borrarTareasMenu = async (tareas = []) => {
   const choices = tareas.map((tarea) => {
@@ -140,6 +147,7 @@ const confirmMenu = async (mess = "") => {
 
   return await inquire.prompt(pregunta);
 };
+
 export {
   inquireMenu,
   pausa,
