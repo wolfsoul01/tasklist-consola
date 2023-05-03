@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
+//Clase individual tarea
 class Tarea {
   id = "";
   desc = "";

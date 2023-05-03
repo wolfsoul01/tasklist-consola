@@ -1,12 +1,17 @@
 import Tarea from "./tarea.js";
 import colors from "colors";
+
+/* Aqui esta la clase de tareas la cual es un conjunto de la clase tarea almacenada como un objeto  */
+
+
+
 class Tareas {
   _listado = {};
 
   constructor() {
     this._listado = {};
   }
-
+//////////////////////////////////////////////////////////////////////////////////
   get listadoArr() {
     const listado = [];
     Object.keys(this._listado).forEach((key) => {
@@ -15,22 +20,28 @@ class Tareas {
 
     return listado;
   }
+//////////////////////////////////////////////////////////////////////////////////
 
   borrarTarea(id = "") {
     delete this._listado[id];
   }
+
+//////////////////////////////////////////////////////////////////////////////////
 
   cargarTareas(tareas = []) {
     tareas.forEach((tareas) => {
       this._listado[tareas.id] = tareas;
     });
   }
+//////////////////////////////////////////////////////////////////////////////////
 
   crearTarea(desc) {
     const t = new Tarea(desc);
 
     this._listado[t.id] = t;
   }
+
+//////////////////////////////////////////////////////////////////////////////////
 
   listarTareas() {
     console.log();
@@ -42,6 +53,7 @@ class Tareas {
       console.log(`${`${i + 1}.`.green}${tarea.desc} :: ${completado}`);
     });
   }
+//////////////////////////////////////////////////////////////////////////////////
 
   listarPendientesCompletadas(compl = true) {
     const busqueda = compl
@@ -61,6 +73,7 @@ class Tareas {
       console.log(`${`${i + 1}`.green}.${desc} :: ${completado}`);
     });
   }
+//////////////////////////////////////////////////////////////////////////////////
 
   completarTareas(ids = []) {
     ids.forEach((id) => {
