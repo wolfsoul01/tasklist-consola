@@ -22,46 +22,50 @@ const main = async () => {
   }
 
   do {
-    opt = await inquireMenu();
+    //Mostrar el menu principal
+    opt = await inquireMenu(); //capturar la obcion seleccionada
     switch (opt) {
+      //Crae tareas
       case "1":
         const desc = await crearTarea();
         tareas.crearTarea(desc);
 
         break;
 
+      //Listar tareas
       case "2":
         tareas.listarTareas();
 
         break;
 
+      //Listar tareas completadas
       case "3":
         tareas.listarPendientesCompletadas(true);
         break;
 
+      //Listar tareas pendientes
       case "4":
         tareas.listarPendientesCompletadas(false);
         break;
 
+      //Completar tareas
       case "5":
-       const {ids} =await copmpletarTareasListado(tareas.listadoArr);
+        const { ids } = await copmpletarTareasListado(tareas.listadoArr);
         tareas.completarTareas(ids);
         break;
 
+      //Borrar tareas
       case "6":
-          const { borradas } = await borrarTareasMenu(tareas.listadoArr);
-          if (borradas.length !== 0) {
-            const { resp } = await confirmMenu("Estas seguro ");
-            if (resp) {
-              borradas.forEach((e) => {
-                tareas.borrarTarea(e);
-                console.log('Tarea Borrada :)');
-                
-              });
-            }
+        const { borradas } = await borrarTareasMenu(tareas.listadoArr);
+        if (borradas.length !== 0) {
+          const { resp } = await confirmMenu("Estas seguro ");
+          if (resp) {
+            borradas.forEach((e) => {
+              tareas.borrarTarea(e);
+              console.log("Tarea Borrada :)");
+            });
           }
-        
-
+        }
 
         break;
 
